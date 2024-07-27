@@ -5,4 +5,9 @@ api-version: '1.20'
 load: STARTUP
 authors: [ H_TF ]
 description: 一个简单的测试插件
-website: localhost:443
+depend: [NBTAPI]
+commands:
+  fenchants:
+    description: ForceEnchants
+    usage: /<command>
+    aliases: ["fch"]
