@@ -1,0 +1,8 @@
+name: forceEnchants
+version: '1.0'
+main: com.h_tf.forceEnchants.ForceEnchants
+api-version: '1.20'
+load: STARTUP
+authors: [ H_TF ]
+description: 一个简单的测试插件
+website: localhost:443
