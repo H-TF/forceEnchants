@@ -4,10 +4,12 @@ main: com.h_tf.forceEnchants.ForceEnchants
 api-version: '1.20'
 load: STARTUP
 authors: [ H_TF ]
-description: 一个简单的测试插件
+description: 强制附魔-H_TF
 depend: [NBTAPI]
 commands:
   fenchants:
     description: ForceEnchants
-    usage: /<command>
+    usage: /<command> help
     aliases: ["fch"]
+    permission: forceenchants.enchant
+    permission-message: 权限不足
