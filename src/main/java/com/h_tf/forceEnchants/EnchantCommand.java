@@ -31,8 +31,8 @@ public class EnchantCommand implements CommandExecutor {
             if (nbti.toString().contains("sharpness")){
                 commandSender.sendMessage("fengli");
                 String json = nbti.toString();
-                Util.stringReplace(json,strings[0]);
-                String enchjson = json.replace("sharpness\",lvl=", "sharpness");
+                String enchjson = Util.stringReplace(json,strings[0]);
+                commandSender.sendMessage(enchjson);
 
 
 //                itemInMainHand = NBT.itemStackFromNBT((ReadableNBT) enchantments);
