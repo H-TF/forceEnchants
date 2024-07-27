@@ -25,7 +25,21 @@ public class EnchantCommand implements CommandExecutor {
             commandSender.sendMessage("§x§f§f§f§0§0§0§l/§x§f§f§f§0§0§0§lf§x§f§f§f§0§0§0§lc§x§f§f§f§0§0§0§lh§x§f§f§f§0§0§0§l §x§f§f§f§0§0§0§ln§x§f§f§f§0§0§0§lb§x§f§f§f§0§0§0§lt§x§f§f§f§0§0§0§l §x§f§f§f§0§0§0§l §x§f§f§f§0§0§0§l §x§f§f§f§0§0§0§l §x§f§f§f§0§0§0§l查§x§f§f§f§0§0§0§l看§x§f§f§f§0§0§0§l手§x§f§f§f§0§0§0§l中§x§f§f§f§0§0§0§l物§x§f§f§f§0§0§0§l品§x§f§f§f§0§0§0§ln§x§f§f§f§0§0§0§lb§x§f§f§f§0§0§0§lt§x§f§f§f§0§0§0§l标§x§f§f§f§0§0§0§l签");
             return true;
         } else {
-            if (commandSender instanceof Player) {
+            if (commandSender instanceof Player && strings[0].equals("nbt")) {
+                player = (Player) commandSender;
+                ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+                ReadWriteNBT nbti = NBT.itemStackToNBT(itemInMainHand);
+                String json = nbti.toString();
+                commandSender.sendMessage(json);
+                return true;
+            } else if (!(commandSender instanceof Player) && strings[1].equals("nbt")) {
+                player = Bukkit.getPlayer(strings[0]);
+                ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+                ReadWriteNBT nbti = NBT.itemStackToNBT(itemInMainHand);
+                String json = nbti.toString();
+                commandSender.sendMessage(json);
+                return true;
+            } else if (commandSender instanceof Player) {
                 player = (Player) commandSender;
                 replace = strings[0];
                 value = strings[1];
@@ -37,10 +51,6 @@ public class EnchantCommand implements CommandExecutor {
             ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
             ReadWriteNBT nbti = NBT.itemStackToNBT(itemInMainHand);
             String json = nbti.toString();
-            if (strings[0] == "nbt") {
-                commandSender.sendMessage(json);
-                return true;
-            }
             if (strings.length == 2 || strings.length == 3) {
                 if (nbti.toString().contains(replace)) {
                     String enchjson = Util.stringReplace(json, replace, value);
